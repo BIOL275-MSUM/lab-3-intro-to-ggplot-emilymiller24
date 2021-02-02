@@ -190,9 +190,11 @@ are shown nicely with these types of graphs.
 
 ## Links to peer review
 
-I reviewed Marin’s lab report at this URL: \_\_\_
+I reviewed Marin’s lab report at this URL:
+<https://github.com/BIOL275-MSUM/lab-3-intro-to-ggplot-marineeg/issues/1>
 
-Marin reviewed my lab report at this URL: \_\_\_
+Marin reviewed my lab report at this URL:
+<https://github.com/BIOL275-MSUM/lab-3-intro-to-ggplot-emilymiller24/issues/1>
 
 ## Session Info
 
