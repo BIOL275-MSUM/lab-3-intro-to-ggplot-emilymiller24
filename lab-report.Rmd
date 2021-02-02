@@ -1,6 +1,6 @@
 ---
 title: "Lab 3 Report"
-author: "___"
+author: "Emily Miller"
 date: "`r format(Sys.Date())`"
 output: github_document
 ---
@@ -11,25 +11,55 @@ Instructions for this lab report can be found on [Your assignment section of Lab
 
 > A. Insert an R code chunk and create a graph depicting the frequency distribution of the 35 mass measurements. It should have legible text and appropriate axis labels.
 
-\_\_\_
+```{r}
+# load packages -----------------------------------------------------------
+
+library(tidyverse)
+
+
+# firefly graphs ----------------------------------------------------------
+
+fireflies_data<- read_csv("https://whitlockschluter.zoology.ubc.ca/wp-content/data/chapter02/chap02q19FireflySpermatophoreMass.csv")
+
+ggplot(data = fireflies_data) +
+  geom_histogram(mapping = aes(x = spermatophoreMass), binwidth = 0.015, 
+                 boundary = 0, closed = "left", fill = "#C5351B", 
+                 color = "black") +
+  labs(x = "Mass of Spermatophore (mg)", y = "Frequency (number of individual fireflies)", 
+       title = "Frequency distribution of spermatophore mass from a sample of 35 male fireflies") +
+  scale_y_continuous(breaks = seq(0, 12, 1), limits = c(0, 12), 
+                     expand = expansion(mult = 0)) +
+  scale_x_continuous(breaks = seq(0.03, 0.18, 0.015), limits = c(0.03, 0.18)) +
+  theme_classic() +
+  theme(
+    axis.title = element_text(face = "bold"),
+    axis.text = element_text(color = "black", size = rel(1)),
+    axis.text.x = element_text(angle = 45, hjust = 1)
+    )
+```
+
+
+
+
 
 > B. What type of graph did you choose in part (A)? Why?
 
-\_\_\_
+I chose a histogram because they're good with using numerical data. They're nice for showing distributions for numerical data as opposed to categorical data.
 
 > C. Describe the shape of the frequency distribution. What are its main features?
 
-\_\_\_
+The distribution mainly looks to be a bell shaped curve, along with an outlier appearing at the far right.
 
 > D. What term would be used to describe the largest measurement in the frequency distribution? You can refer to the lecture slides, your notes, or the textbook.
 
-\_\_\_
+Mode
 
 ## Bird orders
 
 I read the data using the code provided by the instructor. The dataset is from the auk package and was originally named ebird_taxonomy. I converted it to a tibble, removed non-species taxa, and named the new dataset birds.
 
 ```{r}
+
 library(auk)                          # load the auk package
 birds <- ebird_taxonomy %>%           # start with the ebird_taxonomy data
   as_tibble() %>%                     # tibbles print better in the console
@@ -38,25 +68,52 @@ birds <- ebird_taxonomy %>%           # start with the ebird_taxonomy data
 
 > E. How many bird species are in the new birds dataset? How did you find out?
 
-\_\_\_
+There are 10,721 bird species. I created a table to look at all the different species.
+
+```{r}
+nrow(birds)
+```
+
 
 > H. How many orders are there? You can get this right by counting on the graph, but you will only get full points if you use some code to figure it out.
 
-\_\_\_
+There are 41 orders, which I found by making a table that showed 41 rows in it.
+
+```{r}
+distinct(birds, scientific_name)
+count(birds, order)
+```
+
 
 > F. Insert an R code chunk and create a graph depicting the distribution of orders in the birds dataset. Sort the orders with the most frequent on the left. It should have legible text and appropriate axis labels.
 
-\_\_\_
+```{r}
+ggplot(data = birds) +
+  geom_bar(mapping = aes(x = fct_infreq(order)), fill = "#C5331B", 
+           width = .8) +
+  labs(x = "Order", y = "Frequency (log number of bird species)", 
+       title = "Number of bird species in each order", 
+       subtitle = "*Note that numbers are in log scale to better show all data.") +
+  scale_y_log10() +
+  theme_classic(base_size = 12) +
+  theme(
+    axis.title = element_text(face = "bold"),
+    axis.text = element_text(color = "black", size = rel(.7)),
+    axis.text.x = element_text(angle = 60, hjust = 1),
+    axis.ticks.x = element_blank()
+  )
+
+```
 
 > G. What kind of graph did you create? Why?
 
-\_\_\_
+I created a bar graph to show categorical values. And categorical values are shown nicely with these types of graphs.
 
 ## Links to peer review
 
-I reviewed \_\_\_'s lab report at this URL: \_\_\_
+I reviewed Marin's lab report at this URL: \_\_\_
 
-\_\_\_ reviewed my lab report at this URL: \_\_\_
+Marin reviewed my lab report at this URL: \_\_\_
 
 ## Session Info
 
