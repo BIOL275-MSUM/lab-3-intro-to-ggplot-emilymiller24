@@ -3,7 +3,7 @@ Lab 3: Introduction to ggplot
 Emily Miller
 2021-02-02
 
-Welcome to my Lab 2 repository for Quantitative Biology BIOL 275 at
+Welcome to my Lab 3 repository for Quantitative Biology BIOL 275 at
 MSUM.
 
 ## Lab objectives

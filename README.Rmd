@@ -7,7 +7,7 @@ output: github_document
 
 
 
-Welcome to my Lab 2 repository for Quantitative Biology BIOL 275 at MSUM.
+Welcome to my Lab 3 repository for Quantitative Biology BIOL 275 at MSUM.
 
 ## Lab objectives
 
